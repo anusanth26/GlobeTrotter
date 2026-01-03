@@ -352,6 +352,13 @@ app.get("/health", (req, res) => {
 });
   
 
+import sqlite3 from "sqlite3";
+import path from "path";
+
+const dbPath = path.join(process.cwd(), "globetrotter.db");
+const db = new sqlite3.Database(dbPath);
+
+
 app.listen(PORT, () => {
   console.log(`GlobeTrotter server running on http://localhost:${PORT}`);
 });
