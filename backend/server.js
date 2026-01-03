@@ -7,13 +7,15 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const JWT_SECRET = 'your-secret-key-change-in-production';
 
 app.use(cors());
 app.use(express.json());
+
 
 // Initialize SQLite Database
 const db = new sqlite3.Database('./globetrotter.db', (err) => {
@@ -352,13 +354,6 @@ app.get("/health", (req, res) => {
 });
   
 
-
-import path from "path";
-
-const dbPath = path.join(process.cwd(), "globetrotter.db");
-const db = new sqlite3.Database(dbPath);
-
-
 app.listen(PORT, () => {
-  console.log(`GlobeTrotter server running on http://localhost:${PORT}`);
+  console.log(`GlobeTrotter server running on port ${PORT}`);
 });
