@@ -347,6 +347,11 @@ app.get("/api/auth/me", authenticateToken, (req, res) => {
   });
   
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+  
+
 app.listen(PORT, () => {
   console.log(`GlobeTrotter server running on http://localhost:${PORT}`);
 });
