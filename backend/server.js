@@ -30,7 +30,7 @@ const JWT_SECRET = "your-secret-key-change-in-production";
 
 
 // Initialize SQLite Database
-const db = new sqlite3.Database('./globetrotter.db', (err) => {
+const db = new sqlite3.Database('/data/globetrotter.db', (err) => {
   if (err) console.error('Database error:', err);
   else console.log('Connected to SQLite database');
 });
