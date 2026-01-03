@@ -341,12 +341,16 @@ app.get('/api/trips/:tripId/budget', authenticateToken, (req, res) => {
 });
 
 app.get("/api/auth/me", authenticateToken, (req, res) => {
-    res.json({
-      id: req.user.id,
-      name: req.user.name,
-      email: req.user.email,
-    });
-  });
+  db.get(
+    "SELECT id, name, email FROM users WHERE id = ?",
+    [req.user.id],
+    (err, user) => {
+      if (err) return res.status(500).json({ error: "Server error" });
+      res.json(user);
+    }
+  );
+});
+
   
 
 app.get("/health", (req, res) => {

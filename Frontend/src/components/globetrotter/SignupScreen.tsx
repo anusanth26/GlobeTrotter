@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = `${import.meta.env.VITE_API_BASE}/api`;
+
 
 interface UserData {
   name: string;
