@@ -23,8 +23,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options(cors(corsOptions));
-
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
@@ -365,7 +363,11 @@ app.get("/api/auth/me", authenticateToken, (req, res) => {
   );
 });
 
-  
+
+app.get("/", (req, res) => {
+  res.send("GlobeTrotter backend is running");
+});
+ 
 
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
